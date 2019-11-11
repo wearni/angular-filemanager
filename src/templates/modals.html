@@ -33,11 +33,18 @@
         </button>
         <h4 class="modal-title">{{"confirm" | translate}}</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" ng-show="singleSelection().model.usage == 0">
         {{'sure_to_delete' | translate}} <span ng-include data-src="'selected-files-msg'"></span>
 
         <div ng-include data-src="'error-bar'" class="clearfix"></div>
       </div>
+        <div #hasUsage>
+        <div class="modal-body" ng-show="singleSelection().model.usage > 0">
+            {{'sure_to_delete_with_usage_reference' | translate}} <span ng-include data-src="'selected-files-msg'"></span>
+
+            <div ng-include data-src="'error-bar'" class="clearfix"></div>
+        </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="apiMiddleware.apiHandler.inprocess">{{"cancel" | translate}}</button>
         <button type="submit" class="btn btn-primary" ng-disabled="apiMiddleware.apiHandler.inprocess" autofocus="autofocus">{{"remove" | translate}}</button>
@@ -46,6 +53,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="modal animated fadeIn" id="move">
   <div class="modal-dialog">

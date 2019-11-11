@@ -13,6 +13,7 @@
                 perms: new Chmod(model && model.rights),
                 content: model && model.content || '',
                 may_edit: model &&  model.may_edit,
+                usage: model && model.usage || [],
                 ext: model && model.ext,
                 file_url: model && model.file_url || '',
 
@@ -68,9 +69,9 @@
             return !this.isFolder() && fileManagerConfig.isExtractableFilePattern.test(this.model.name);
         };
 
-          Item.prototype.hasEditAccess = function() {
-            return !this.isFolder() && this.model.may_edit === true;
-          };
+        Item.prototype.hasEditAccess = function() {
+          return !this.isFolder() && this.model.may_edit === true;
+        };
 
         Item.prototype.canCopyLink = function() {
             return  this.model.file_url && this.model.file_url.length > 0;
