@@ -691,7 +691,7 @@
             preview: 'Dateivorschau',
             open: 'Öffnen',
             these_elements: 'diese {{total}} elemente',
-            new_folder: 'Neuer ordner',
+            new_folder: 'Neuer Ordner',
             download_as_zip: 'Download als ZIP',
             copy_link: 'Link kopieren'
         });
