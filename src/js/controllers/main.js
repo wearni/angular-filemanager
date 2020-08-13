@@ -160,11 +160,16 @@
                 return $scope.apiMiddleware.download(item, true);
             }
 
+            if (item.hasPreview()) {
+                return $scope.showPreview(item);
+            }
+
             if (item.isEditable()) {
                 return $scope.openEditItem(item);
             }
 
           return $scope.apiMiddleware.download(item, true);
+
         };
 
         $scope.openImagePreview = function() {
@@ -178,6 +183,26 @@
                     $scope.apiMiddleware.apiHandler.inprocess = false;
                     $scope.$apply();
                 });
+        };
+
+        $scope.showPreview = function() {
+            var item = $scope.singleSelection();
+            //$scope.apiMiddleware.apiHandler.inprocess = true;
+            $scope.sendToParent('file_preview', {
+                preview_url: item.model.preview_url,
+                file_url: item.model.file_url,
+                name: item.model.name,
+                size: item.model.size,
+                date: item.model.date
+            });
+            //console.log(item);
+        };
+
+        $scope.sendToParent = function(type, data) {
+            window.parent.postMessage({
+                'type' : type,
+                'data'  : data
+            });
         };
 
         $scope.openEditItem = function() {

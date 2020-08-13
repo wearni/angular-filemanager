@@ -16,6 +16,7 @@
                 usage: model && model.usage || [],
                 ext: model && model.ext,
                 file_url: model && model.file_url || '',
+                preview_url: model && model.preview_url || '',
 
                 recursive: false,
                 fullPath: function() {
@@ -59,6 +60,12 @@
 
         Item.prototype.isImage = function() {
             return fileManagerConfig.isImageFilePattern.test(this.model.name);
+        };
+
+        Item.prototype.hasPreview = function() {
+            console.log(this.model);
+
+            return this.model.preview_url.length > 0;
         };
 
         Item.prototype.isCompressible = function() {
