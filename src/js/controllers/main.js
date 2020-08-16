@@ -193,7 +193,8 @@
                 file_url: item.model.file_url,
                 name: item.model.name,
                 size: item.model.size,
-                date: item.model.date
+                date: item.model.date,
+                description: item.model.description
             });
             //console.log(item);
         };

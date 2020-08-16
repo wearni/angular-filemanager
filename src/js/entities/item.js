@@ -17,6 +17,7 @@
                 ext: model && model.ext,
                 file_url: model && model.file_url || '',
                 preview_url: model && model.preview_url || '',
+                description: model && model.description || '',
 
                 recursive: false,
                 fullPath: function() {
@@ -63,8 +64,6 @@
         };
 
         Item.prototype.hasPreview = function() {
-            console.log(this.model);
-
             return this.model.preview_url.length > 0;
         };
 
