@@ -152,6 +152,9 @@
                     return;
                 }
             }
+            if (item.hasPreview()) {
+                return $scope.showPreview(item);
+            }
 
             if (item.isImage()) {
                 if ($scope.config.previewImagesInModal) {
@@ -160,9 +163,7 @@
                 return $scope.apiMiddleware.download(item, true);
             }
 
-            if (item.hasPreview()) {
-                return $scope.showPreview(item);
-            }
+
 
             if (item.isEditable()) {
                 return $scope.openEditItem(item);
